@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="hu" class="light">
+<head>
+    <title>Kiadáskövető App</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="Scripts/Project_Omega.css" />
+    <link rel="stylesheet" href="CSS/style.css" />
+    <style>
+        /* Don't show the not-yet-loaded templates */
+        [ws-template], [ws-children-template] { display: none; }
+    </style>
+    <script type="text/javascript" src="Scripts/Project_Omega.head.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+    }
+  </script>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-colors">
+
+  <header class="flex justify-between items-center p-6 border-b border-gray-300 dark:border-gray-700">
+    <h1 class="text-2xl font-bold">Kiadáskövető</h1>
+    <button id="toggle-theme" class="bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded">
+      Téma váltás
+    </button>
+  </header>
+
+  <main class="max-w-4xl mx-auto p-6 space-y-8">
+    <section class="bg-gray-100 dark:bg-gray-800 p-4 rounded shadow-md">
+      <h2 class="text-xl font-semibold mb-4">Új tranzakció</h2>
+      <form id="transaction-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input id="amount" type="number" placeholder="Összeg" class="p-2 rounded bg-white dark:bg-gray-700" required />
+        <input id="description" type="text" placeholder="Leírás" class="p-2 rounded bg-white dark:bg-gray-700" required />
+        <input id="date" type="date" class="p-2 rounded bg-white dark:bg-gray-700" required />
+        <select id="category" class="p-2 rounded bg-white dark:bg-gray-700">
+          <option>Élelmiszer</option>
+          <option>Közlekedés</option>
+          <option>Szórakozás</option>
+          <option>Számlák</option>
+          <option>Ruházat</option>
+          <option>Gyógyszer</option>
+          <option>Oktatás</option>
+          <option>Hobbi</option>
+          <option>Utazás</option>
+          <option>Sport</option>
+          <option>Ajándék</option>
+          <option>Egyéb</option>
+        </select>
+        <select id="type" class="p-2 rounded bg-white dark:bg-gray-700">
+          <option>Bevétel</option>
+          <option>Kiadás</option>
+        </select>
+        <button type="submit" class="bg-blue-600 text-white rounded px-4 py-2 md:col-span-2">Mentés</button>
+      </form>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-xl font-semibold">Statisztikák</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded shadow-md">
+          <h3 class="font-semibold mb-2">Havi bontás</h3>
+          <canvas id="monthly-chart" class="h-48 w-full bg-gray-300 dark:bg-gray-700 rounded"></canvas>
+        </div>
+        <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded shadow-md">
+          <h3 class="font-semibold mb-2">Kategória eloszlás</h3>
+          
+          <canvas id="category-chart" class="h-48 w-full bg-gray-300 dark:bg-gray-700 rounded"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section class="text-center">
+      <button id="export-csv" class="bg-green-600 text-white rounded px-4 py-2">Export CSV</button>
+    </section>
+  </main>
+
+  <footer class="text-center text-sm p-4 text-gray-500 dark:text-gray-400">
+    Created by Dominik Borbély.
+  </footer>
+    <script type="module" src="Scripts/Project_Omega.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
