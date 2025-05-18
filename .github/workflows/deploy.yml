@@ -34,8 +34,8 @@ jobs:
 
       - name: Reinstall Node.js dependencies
         run: |
-          rm -rf node_modules # Remove existing node_modules
-          npm ci # Reinstall dependencies for the current platform
+          # Use npm install instead of npm ci since there's no package-lock.json
+          npm install
 
       - name: Build project
         run: dotnet publish -c Release -o out
